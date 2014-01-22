@@ -22,14 +22,14 @@ public class FlugBuchung
     
     public String gibReiseziel()
     {
-        return "";
+        return aReiseziel;
     }
     public String gibDatum()
     {
-        return "";
+        return aDatum;
     }
     public int gibPassagierNr()
     {
-        return 0;
+        return aPassagierNr;
     }      
 }

@@ -9,10 +9,10 @@ public class Steuerung
 	// instance variables - replace the example below with your own#
 
 	private GUI dieGUI;
-	private FlugBuchung[] dieFlugBuchung;
+	private FlugBuchung[] dieFlugBuchung=new FlugBuchung[10000];
 	private Passagier[] derPassagier = new Passagier[10000];
-	private int aAnzahlBuchung; // int weil GZ
-	private int aAnzahlPassagiere; // int weil GZ
+	private int aAnzahlBuchung=0; // int weil GZ
+	private int aAnzahlPassagiere=0; // int weil GZ
 	private String aEntfernung[][] = { { "Berlin", "100" },
 			{ "New York", "5000" } }; // string weil da ein text ist
 
@@ -22,13 +22,24 @@ public class Steuerung
 	public Steuerung()
 	{
 		dieGUI = new GUI(this);
-		derPassagier[1230] = new Passagier("Maier", "Hans"); // zum test
-
+		//derPassagier[1230] = new Passagier("Maier", "Hans"); // zum test
 	}
 
-	public void neueBuchung(String pname, String pVorname, String pDatum,
+	public void neueBuchung(String pName, String pVName, String pDatum,
 			String pReiseziel)
 	{
+		for(int i=0; i<derPassagier.length;i++)
+		{
+			if(derPassagier[i]!=null)
+			{
+				if (pName.equals(derPassagier[i].gibName())
+						&& pVName.equals(derPassagier[i].gibVorname()))
+				{
+					dieFlugBuchung[aAnzahlBuchung++]=new FlugBuchung(i,pDatum,pReiseziel);
+					return;
+				}
+			}
+		}
 	}
 
 	public boolean storniereBuchung(int pPassNr, String pDatum)
@@ -80,7 +91,7 @@ public class Steuerung
 			if (derPassagier[i] != null)
 			{
 				if (pName.equals(derPassagier[i].gibName())
-						&& pVName.equals(derPassagier[i]))
+						&& pVName.equals(derPassagier[i].gibVorname()))
 				{
 					pGefunden = true;
 					for (int j = 0; j < dieFlugBuchung.length && !zGefunden; j++)
@@ -102,4 +113,14 @@ public class Steuerung
 		}
 		dieGUI.anzeigenText("Reiseziel:", dasReiseziel);
 	}
+	
+	public static void main(String[] args)
+	{
+		Steuerung s=new Steuerung();
+		s.dieGUI.clickNeuerPassagier();
+		s.dieGUI.clickNeueBuchung();
+		s.dieGUI.clickAnzeigeReiseziel();
+	}
+		
+	
 }

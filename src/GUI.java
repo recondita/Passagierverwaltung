@@ -25,10 +25,12 @@ public class GUI
 
 	public void clickNeuerPassagier()
 	{
+		dieSteuerung.neuerPassagier(nName.getText(), vName.getText());
 	}
 
 	public void clickNeueBuchung()
 	{
+		dieSteuerung.neueBuchung(nName.getText(), vName.getText(), datum.getText(), ziel.getText());
 	}
 	
 	public void clickGutschreibenMeilen()
@@ -59,4 +61,5 @@ public class GUI
 	{
 		return ziel.getText();
 	}
+	
 }

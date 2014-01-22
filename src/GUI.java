@@ -49,7 +49,7 @@ public class GUI
 
 	public void anzeigenText(String p1, String pW2)
 	{
-		System.out.println(p1+": "+pW2);
+		System.out.println(p1+" "+pW2);
 	}
 
 	private int readPNrAsInt()

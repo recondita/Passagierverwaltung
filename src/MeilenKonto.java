@@ -43,7 +43,7 @@ public class MeilenKonto
     }
     public int gibBonusMeilen()
     {
-        return 0;
+        return aBonusMeilen;
     }
     public String gibStatus()
     {

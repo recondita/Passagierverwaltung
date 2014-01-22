@@ -44,7 +44,7 @@ public class Steuerung
 
 	public boolean storniereBuchung(int pPassNr, String pDatum)
 	{
-		return true;
+		return false;
 	}
 
 	public void neuerPassagier(String pName, String pVorname)

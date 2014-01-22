@@ -96,11 +96,9 @@ public class Steuerung
 							}
 						}
 					}
-
 				}
 
 			}
-
 		}
 		dieGUI.anzeigenText("Reiseziel:", dasReiseziel);
 	}

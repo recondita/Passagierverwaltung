@@ -9,7 +9,7 @@ public class MeilenKonto
 {
     // instance variables - replace the example below with your own
     
-    private String aStatus;
+    private String aStatus="advanced";
     int aBonusMeilen;
     int aStatusMeilen;
 

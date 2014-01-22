@@ -64,7 +64,7 @@ public class Steuerung
 			String status = derPassagier[pPassNr].gibStatus();
 			String name = derPassagier[pPassNr].gibName();
 			String vName = derPassagier[pPassNr].gibVorname();
-			dieGUI.anzeigenText("Status fuer" + vName + " " + name, status);
+			dieGUI.anzeigenText("Status fuer " + vName + " " + name, status);
 		}
 	}
 
@@ -117,9 +117,11 @@ public class Steuerung
 	public static void main(String[] args)
 	{
 		Steuerung s=new Steuerung();
+		s.aAnzahlPassagiere=1230;
 		s.dieGUI.clickNeuerPassagier();
 		s.dieGUI.clickNeueBuchung();
 		s.dieGUI.clickAnzeigeReiseziel();
+		s.dieGUI.clickGutschreibenMeilen();
 	}
 		
 	

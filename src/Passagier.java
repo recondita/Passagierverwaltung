@@ -26,7 +26,7 @@ public class Passagier
 
     public String gibStatus()
     {
-        return "";
+        return dasMeilenKonto.gibStatus();
     }
     
     public void gutschreibenMeilen(int pEntfernung)
@@ -36,11 +36,12 @@ public class Passagier
     
     public void verbraucheMeilen(int pEntfernung)
     {
+    	dasMeilenKonto.verbraucheMeilen(pEntfernung);
     }
     
     public int gibFlugmeilen()
     {
-        return 0;
+        return -1;
     }
     
     public String gibName()

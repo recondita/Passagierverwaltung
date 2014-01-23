@@ -7,11 +7,12 @@
 public class Steuerung
 {
 	// instance variables - replace the example below with your own#
-
+	//Arrays sind hier meist Schwachsinn, LinkedLists/Baueme eigenen sich hier besser.
+	
 	private GUI dieGUI;
 	private FlugBuchung[] dieFlugBuchung=new FlugBuchung[10000];
 	private Passagier[] derPassagier = new Passagier[10000];
-	private int aAnzahlBuchung=0; // int weil GZ
+	private int aAnzahlBuchungen=0; // int weil GZ
 	private int aAnzahlPassagiere=0; // int weil GZ
 	private String aEntfernung[][] = { { "Heidelberg", "70" },
 			{ "New York", "5000" }, {"Rio de Janeiro", "7000"} }; // string weil da ein text ist
@@ -28,14 +29,14 @@ public class Steuerung
 	public void neueBuchung(String pName, String pVName, String pDatum,
 			String pReiseziel)
 	{
-		for(int i=0; i<derPassagier.length;i++)
+		for(int i=0; i<aAnzahlPassagiere;i++)
 		{
 			if(derPassagier[i]!=null)
 			{
 				if (pName.equals(derPassagier[i].gibName())
 						&& pVName.equals(derPassagier[i].gibVorname()))
 				{
-					dieFlugBuchung[aAnzahlBuchung++]=new FlugBuchung(i,pDatum,pReiseziel);
+					dieFlugBuchung[aAnzahlBuchungen++]=new FlugBuchung(i,pDatum,pReiseziel);
 					return;
 				}
 			}
@@ -44,7 +45,35 @@ public class Steuerung
 
 	public boolean storniereBuchung(int pPassNr, String pDatum)
 	{
-		return false;
+		int idxMerk=-1;
+		int i=0;
+		while(i<aAnzahlBuchungen&&idxMerk==-1)
+		{
+			int diePassNr=dieFlugBuchung[i].gibPassagierNr();
+			String dasDatum=dieFlugBuchung[i].gibDatum();
+			if(diePassNr==pPassNr&&dasDatum.equals(pDatum))
+			{
+				idxMerk=i;
+			}
+			else
+			{
+				i++;
+			}
+		}
+		if(idxMerk==-1)
+		{
+			return false;
+		}
+		else
+		{
+			for(i=idxMerk; i<aAnzahlBuchungen-2; i++)
+			{
+				//Wofür gibt es denn LinkedLists?
+				dieFlugBuchung[i]=dieFlugBuchung[i+1];
+			}
+			aAnzahlBuchungen--;
+			return true;			
+		}		
 	}
 
 	public void neuerPassagier(String pName, String pVorname)
@@ -86,7 +115,7 @@ public class Steuerung
 		boolean pGefunden = false;
 		boolean zGefunden = false;
 		String dasReiseziel="------";
-		for (int i = 0; i < derPassagier.length && !pGefunden; i++)
+		for (int i = 0; i < aAnzahlPassagiere && !pGefunden; i++)
 		{
 			if (derPassagier[i] != null)
 			{
@@ -94,7 +123,7 @@ public class Steuerung
 						&& pVName.equals(derPassagier[i].gibVorname()))
 				{
 					pGefunden = true;
-					for (int j = 0; j < dieFlugBuchung.length && !zGefunden; j++)
+					for (int j = 0; j < aAnzahlBuchungen && !zGefunden; j++)
 					{
 						if (dieFlugBuchung[j] != null)
 						{

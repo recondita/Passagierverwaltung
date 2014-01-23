@@ -22,14 +22,15 @@ public class MeilenKonto
     {
     }
     
-    private void berechneStatusMeilen(int pEntfernung)
+    private int berechneStatusMeilen(int pEntfernung)
     {
     	/*
     	if(pEntfernung<0)
     	aStatusMeilen+=1100;
     	else
     	*/
-        aStatusMeilen+=pEntfernung/50;
+    	int erhoehung=pEntfernung/50;
+        int aStatusMeilen= this.aStatusMeilen+((erhoehung>500)?500:erhoehung);
         if(aStatusMeilen<1000)
         {
         	aStatus="normal";
@@ -45,15 +46,16 @@ public class MeilenKonto
         		aStatus="advanced";
         	}
         }
+        return aStatusMeilen;
     }
-    private void berechneBonusMeilen(int pEntfernung)
+    private int berechneBonusMeilen(int pEntfernung)
     {
-        aBonusMeilen+=pEntfernung/10;
+        return aBonusMeilen+pEntfernung/10;
     }
     public void gutschreibenMeilen(int pEntfernung)
     {
-        berechneStatusMeilen(pEntfernung);
-        berechneBonusMeilen(pEntfernung);
+        aStatusMeilen=berechneStatusMeilen(pEntfernung);
+        aBonusMeilen=berechneBonusMeilen(pEntfernung);
     }
     
     /*
@@ -75,8 +77,11 @@ public class MeilenKonto
     
     public void aendereMitgliedschaft(boolean pTF)
     {
+    	if(aMitglied!=pTF)
+    	{
     	aMitglied=pTF;
-    	berechneStatusMeilen(0);//pTF?-1:0);
+    	aStatusMeilen=berechneStatusMeilen(pTF?1100:-1100);
+    	}
     }
     
     public boolean gibMitgliedschaft()

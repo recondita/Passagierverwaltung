@@ -30,7 +30,7 @@ public class MeilenKonto
     	else
     	*/
     	int erhoehung=pEntfernung/50;
-        int aStatusMeilen= this.aStatusMeilen+((erhoehung>500)?500:erhoehung);
+        int aStatusMeilen= this.aStatusMeilen+((erhoehung>0)?((erhoehung>500)?500:erhoehung):((erhoehung<-500)?-500:erhoehung));
         if(aStatusMeilen<1000)
         {
         	aStatus="normal";
@@ -80,7 +80,8 @@ public class MeilenKonto
     	if(aMitglied!=pTF)
     	{
     	aMitglied=pTF;
-    	aStatusMeilen=berechneStatusMeilen(pTF?1100:-1100);
+    	aStatusMeilen+=(pTF?1100:-1100);
+    	berechneStatusMeilen(0);
     	}
     }
     

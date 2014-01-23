@@ -13,8 +13,8 @@ public class Steuerung
 	private Passagier[] derPassagier = new Passagier[10000];
 	private int aAnzahlBuchung=0; // int weil GZ
 	private int aAnzahlPassagiere=0; // int weil GZ
-	private String aEntfernung[][] = { { "Berlin", "100" },
-			{ "New York", "5000" } }; // string weil da ein text ist
+	private String aEntfernung[][] = { { "Heidelberg", "70" },
+			{ "New York", "5000" }, {"Rio de Janeiro", "7000"} }; // string weil da ein text ist
 
 	/**
 	 * Constructor for objects of class Steuerung

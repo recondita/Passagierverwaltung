@@ -40,6 +40,7 @@ public class GUI
 
 	public void clickStorniereBuchung()
 	{
+		System.out.println(dieSteuerung.storniereBuchung(readPNrAsInt(), datum.getText())?("Stonieren erfolgreich"):("Stonieren fehlgeschlagen"));
 	}
 
 	public void clickAnzeigeReiseziel()

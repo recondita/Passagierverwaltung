@@ -68,7 +68,7 @@ public class Steuerung
 		{
 			for(i=idxMerk; i<aAnzahlBuchungen-2; i++)
 			{
-				//Wofür gibt es denn LinkedLists?
+				//Wofï¿½r gibt es denn LinkedLists?
 				dieFlugBuchung[i]=dieFlugBuchung[i+1];
 			}
 			aAnzahlBuchungen--;
@@ -151,6 +151,7 @@ public class Steuerung
 		s.dieGUI.clickNeueBuchung();
 		s.dieGUI.clickAnzeigeReiseziel();
 		s.dieGUI.clickGutschreibenMeilen();
+		s.dieGUI.clickStorniereBuchung();
 	}
 		
 	
